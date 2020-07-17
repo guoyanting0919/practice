@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "baffle": "^0.3.6",
     "core-js": "^3.6.5",
+    "element-ui": "^2.13.2",
     "moment": "^2.26.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",

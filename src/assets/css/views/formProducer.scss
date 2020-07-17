@@ -1,0 +1,454 @@
+$colorMain: rgb(0, 255, 128);
+// $colorMain: rgb(0, 238, 255);
+$colorBlack: #000;
+$colorRed: #e63a3a;
+$colorGray: #b9b9b8;
+$textShadow: 0 0 10px $colorMain;
+#formProducer {
+  width: 100%;
+  min-height: 100vh;
+  background: $colorBlack;
+  //   background-image: url("../assets/Images/3356.png");
+  //   background-position: center;
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+
+  .header {
+    height: 120px;
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+    color: $colorMain;
+    position: sticky;
+    top: 0;
+    background-color: $colorBlack;
+    z-index: 50;
+    text-shadow: 5px 5px #666;
+    // animation: headerAni 1s infinite;
+  }
+
+  .sideBar {
+    position: fixed;
+    width: 300px;
+    height: calc(100vh - 120px);
+    box-sizing: border-box;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    // background-image: linear-gradient(to bottom, $colorMain, $colorBlack);
+    background: $colorBlack;
+    color: $colorMain;
+    padding-top: 0;
+  }
+
+  .sideBarTitle {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    line-height: 2.5rem;
+    text-shadow: 0 0 10px $colorMain;
+  }
+
+  .sideBarItem {
+    margin: 1.25rem 0;
+    font-size: 1rem;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.5s;
+    white-space: nowrap;
+
+    .fas {
+      margin-left: -0.5rem;
+      font-size: 1.25rem;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &.active {
+      opacity: 1;
+      text-shadow: 0 0 10px $colorMain;
+    }
+  }
+
+  .mainContainer {
+    width: calc(100% - 300px);
+    margin-left: auto;
+    min-height: 100vh;
+  }
+
+  .formWidth {
+    margin: auto;
+    width: 90%;
+    position: relative;
+  }
+
+  .titleLabel {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
+
+    .el-form-item__label {
+      width: 367px;
+      font-size: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
+  .labelTitle {
+    color: $colorMain;
+    text-shadow: 0 0 10px $colorMain;
+    margin-bottom: 1rem;
+    animation: labelTitleAni 1s ease 0s infinite;
+  }
+
+  .colSelect .el-input {
+    width: 80px;
+  }
+
+  .btnsGroup {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 4%;
+    transition: 0.5s;
+
+    &.opacityBox {
+      opacity: 0.35;
+    }
+  }
+
+  .outputGroup {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    margin-top: 5rem;
+    transition: 0.5s;
+
+    &.opacityBox {
+      opacity: 0.35;
+    }
+  }
+
+  .outputBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .buffle {
+    word-wrap: break-word;
+    word-break: normal;
+    overflow-x: hidden;
+    border: 2px solid $colorMain;
+    color: $colorMain;
+    border-radius: 4px;
+    box-shadow: 0 0 10px $colorMain;
+    padding: 4px 8px;
+    min-height: 3rem;
+    line-height: 2rem;
+  }
+
+  .outputBox .el-textarea textarea {
+    min-height: 65px !important;
+  }
+
+  .copyBtn {
+    opacity: 0.7;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .previewBox {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+
+    &.opacityBox {
+      opacity: 0.35;
+    }
+  }
+
+  .el-form-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .el-form-item__label {
+    width: 100px;
+    text-align: right;
+    color: $colorMain;
+    text-shadow: $textShadow;
+  }
+
+  .el-textarea__inner {
+    color: $colorMain;
+    background: transparent;
+    border: 2px solid $colorMain;
+    box-shadow: 0 0 10px $colorMain;
+  }
+
+  .el-input__inner {
+    position: relative;
+    color: $colorMain;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid $colorMain;
+    border-radius: 0;
+    transition: 0.5s;
+
+    &:focus {
+      border-bottom: 3px dashed #ff00d4;
+    }
+  }
+
+  .el-input {
+    width: 250px;
+    margin-right: 1rem;
+    margin-bottom: 0.75rem;
+
+    ::placeholder {
+      color: #b3b7b8;
+    }
+  }
+
+  .el-textarea {
+    ::placeholder {
+      color: #b3b7b8;
+    }
+  }
+
+  .el-button--primary {
+    color: $colorMain;
+    background-color: $colorBlack;
+    border-color: none;
+    border: 2px solid $colorMain;
+    transition: 0.2s;
+    margin: 1rem;
+    box-shadow: 4px 4px 0 $colorMain;
+    border-radius: 23px;
+
+    &:active {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0 $colorMain;
+    }
+  }
+
+  .el-button--danger {
+    color: $colorRed;
+    background-color: $colorBlack;
+    border-color: none;
+    border: 2px solid $colorRed;
+    transition: 0.2s;
+    margin: 1rem;
+    box-shadow: 4px 4px 0 $colorRed;
+    border-radius: 23px;
+
+    &:active {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0 $colorRed;
+    }
+  }
+
+  .el-switch {
+    margin-right: 1rem;
+    border-radius: 0;
+  }
+
+  .el-switch__core {
+    background: $colorBlack;
+    border: 1px solid $colorMain;
+  }
+
+  .el-switch__label {
+    color: darken($color: $colorGray, $amount: 25);
+  }
+
+  .el-select .el-input .el-select__caret {
+    color: $colorMain;
+  }
+  .el-switch__label.is-active {
+    color: $colorMain;
+    text-shadow: 0 0 10px $colorMain;
+  }
+
+  .el-switch__core {
+    border-radius: 0;
+  }
+
+  .el-switch.is-checked .el-switch__core::after,
+  .el-switch__core:after {
+    background-color: $colorMain;
+    border-radius: 0;
+  }
+
+  .el-table td,
+  .el-table th.is-leaf {
+    border-bottom: 2px solid $colorMain;
+  }
+
+  .el-table {
+    width: 50%;
+    // margin: auto;
+    border: 2px solid $colorMain;
+    box-shadow: 0 0 10px $colorMain;
+    background: $colorBlack;
+    margin-top: 1rem;
+
+    &::before {
+      height: 0;
+    }
+  }
+
+  .tableHeader {
+    font-size: 16px;
+    color: $colorMain;
+    line-height: 34px;
+    font-size: 20px;
+    background-color: $colorMain;
+    text-shadow: 0 0 10px $colorMain;
+  }
+
+  .el-table th,
+  .el-table tr {
+    background-color: $colorBlack;
+    color: $colorMain;
+    transition: 0.5s;
+  }
+
+  .el-table__row:hover,
+  .el-table--enable-row-hover .el-table__body tr:hover > td {
+    background-color: darken($color: $colorGray, $amount: 55);
+  }
+
+  .rwdPreview {
+    border: 2px solid $colorMain;
+    box-shadow: 0 0 10px $colorMain;
+    width: 100%;
+    // height: 400px;
+    padding: 1rem;
+  }
+
+  .previewDiv {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    border: 2px dashed $colorMain;
+    color: $colorMain;
+    transition: 0.5s;
+
+    &:hover {
+      background: $colorMain;
+      color: $colorBlack;
+      border: 2px dashed $colorBlack;
+    }
+  }
+}
+
+.mySelect {
+  background: #000000ab;
+  border: 2px solid $colorMain;
+  box-shadow: 0 0 10px $colorMain;
+
+  .el-select-dropdown__item {
+    color: $colorMain;
+
+    &:hover {
+      color: $colorBlack;
+      background: $colorMain;
+      text-shadow: 0 0 10px $colorBlack;
+    }
+  }
+
+  .el-select-dropdown__item.hover,
+  .el-select-dropdown__item:hover {
+    background-color: $colorMain;
+    color: $colorBlack;
+  }
+}
+
+.el-popper[x-placement^="bottom"] .popper__arrow {
+  border-bottom-color: $colorMain;
+}
+
+.el-popper[x-placement^="bottom"] .popper__arrow::after {
+  border-bottom-color: transparent;
+}
+
+.el-message {
+  background: #000000d1;
+  border: none;
+  box-shadow: 0 0 10px $colorMain, 0 0 14px $colorMain, 0 0 17px $colorMain;
+  color: $colorMain;
+  left: 88%;
+  // top: 30px;
+}
+
+.el-message--info .el-message__content,
+.el-message .el-icon-info {
+  color: $colorMain;
+}
+
+@keyframes labelTitleAni {
+  0% {
+    text-shadow: 0 0 10px $colorMain;
+  }
+  50% {
+    text-shadow: 0 0 10px $colorMain, 0 0 12px $colorMain, 0 0 15px $colorMain;
+  }
+  100% {
+    text-shadow: 0 0 10px $colorMain;
+  }
+}
+// @keyframes headerAni {
+//   0% {
+//     text-shadow: 5px 5px #666;
+//   }
+//   50% {
+//     text-shadow: -5px -5px #666;
+//   }
+//   100% {
+//     text-shadow: 5px 5px #666;
+//   }
+// }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.8s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  position: absolute;
+}
+
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-move {
+  transition: all 0.8s;
+}

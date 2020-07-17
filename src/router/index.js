@@ -40,6 +40,27 @@ const routes = [
       NoNeedHome: false,
     },
   },
+  {
+    path: "/FormGenerator",
+    name: "FormGenerator",
+    component: () => import("../views/FormGenerator.vue"),
+    meta: {
+      title: "FormGenerator",
+      requireAuth: false,
+      NoNeedHome: false,
+    },
+  },
+
+  {
+    path: "/FormProducer",
+    name: "FormProducer",
+    component: () => import("../views/FormProducer.vue"),
+    meta: {
+      title: "FormProducer",
+      requireAuth: false,
+      NoNeedHome: false,
+    },
+  },
 
   // 不存在的路由跳轉
   {
@@ -49,12 +70,21 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",
   base: process.env.BASE_URL,
   routes,
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  // console.log(to.meta.title);
+  // 設定網頁 title
+  if (to.meta.title) {
+    document.title = `${to.meta.title}`;
+    next();
+  }
 });
 
 export default router;

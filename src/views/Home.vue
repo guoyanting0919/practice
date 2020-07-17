@@ -1,6 +1,13 @@
 <template>
   <div id="home">
-    <h1>ad</h1>
+    <div v-if="r">
+      <div
+        class="link"
+        @click="routerChange(item.name)"
+        v-for="(item, index) in r"
+        :key="index"
+      >{{item.name}}</div>
+    </div>
   </div>
 </template>
 
@@ -11,13 +18,25 @@ export default {
   name: "Home",
   components: {},
   data() {
-    return {};
+    return {
+      r: []
+    };
   },
   computed: {},
-  methods: {},
+  methods: {
+    routerChange(n) {
+      this.$router.push({ name: n });
+    }
+  },
   created() {},
   mounted() {
-    console.log(process.env.VUE_APP_API);
+    this.r = this.$router.options.routes;
   }
 };
 </script>
+<style lang="scss" scoped>
+.link {
+  margin: 1rem;
+  cursor: pointer;
+}
+</style>

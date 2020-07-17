@@ -1,0 +1,9 @@
+[
+  {
+    "label": "活動 / 會議名稱",
+    "component": "el-input",
+    "value": "eventName",
+    "row": 1,
+    "col": 12
+  }
+]
