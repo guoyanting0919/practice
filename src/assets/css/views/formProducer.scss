@@ -265,6 +265,41 @@ $textShadow: 0 0 10px $colorMain;
     }
   }
 
+  .el-radio__input.is-checked + .el-radio__label,
+  .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: $colorMain;
+  }
+
+  .el-radio__inner,
+  .el-checkbox__inner {
+    border: none;
+    background-color: #50504f;
+  }
+
+  .el-radio__input.is-checked .el-radio__inner,
+  .el-checkbox__input.is-checked .el-checkbox__inner,
+  .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    border-color: $colorMain;
+    background: $colorMain;
+  }
+
+  .el-checkbox__inner::after {
+    border: 1px solid #000;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  .el-tag.el-tag--info {
+    background-color: $colorMain;
+    border-color: $colorMain;
+    color: #000;
+  }
+
+  .el-tag.el-tag--info .el-tag__close {
+    background-color: #000;
+    color: $colorMain;
+  }
+
   .el-switch {
     margin-right: 1rem;
     border-radius: 0;

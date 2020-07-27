@@ -10,6 +10,8 @@
       <p class="sideBarTitle">CHOOSE TYPE</p>
       <div>
         <p
+          @mouseover="mbMouseOver"
+          @mouseleave="mbMouseLeave"
           class="sideBarItem"
           @click="inputTypeSelect=item.value"
           :class="{'active':inputTypeSelect===item.value}"
@@ -714,7 +716,7 @@
       </div>
     </div>
 
-    <!-- <CusForm @input="$forceUpdate()" :config="config" @submit="getFormData" v-model="formData2"></CusForm> -->
+    <CusForm :config="config" @submit="getFormData" v-model="formData2"></CusForm>
   </div>
 </template>
 
@@ -943,6 +945,7 @@ export default {
         .reveal(1000);
       vm.config.fieldsConfig = vm.fieldsConfig;
       vm.formData2 = JSON.parse(vm.formData);
+      console.log(JSON.parse(vm.formData));
       vm.$forceUpdate();
       vm.resetFun();
     },
@@ -975,6 +978,12 @@ export default {
           }
         }
       }
+    },
+    mbMouseOver() {
+      this.$store.dispatch("mixBlendHandler", true);
+    },
+    mbMouseLeave() {
+      this.$store.dispatch("mixBlendHandler", false);
     },
     delDiv(index) {
       const vm = this;

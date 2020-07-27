@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 55%;height: 1000px;margin: auto;margin-top: 6rem;">
     <el-form
       label-width="125px"
       :inline="true"
@@ -113,8 +113,13 @@ export default {
       }
     }
   },
+  watch: {
+    value() {
+      this.formData = this.value;
+    }
+  },
   mounted() {
-    console.log(this.$props.value);
+    console.log(1, this.value);
   }
 };
 </script>

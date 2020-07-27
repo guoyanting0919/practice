@@ -27,35 +27,32 @@ export default {
   data() {
     return {
       centerDialogVisible: false,
-      formData: { monStsrt: "", monEnd: "" },
+      formData: { fsdfa: "", wqeq: "" },
       config: {
         fieldsConfig: [
           {
-            fieldType: "SelectOption",
-            name: "monStsrt",
-            label: "周一",
-            placeholder: "開始時間",
-            colsLg: 12,
-            colsMd: 12,
-            colsSm: 12,
-            colsXs: 12,
-            multiple: false,
-            options: [
-              { value: "10:00", label: "10:00" },
-              { value: "11:00", label: "11:00" }
-            ]
+            fieldType: "TextInput",
+            name: "fsdfa",
+            label: "sdfsdf",
+            width: "100%",
+            placeholder: "eeqw",
+            cols: "",
+            colsLg: 22,
+            colsMd: 22,
+            colsSm: 16,
+            colsXs: 19
           },
           {
-            fieldType: "SelectOption",
-            name: "monEnd",
-            label: "~",
-            placeholder: "monEnd",
-            colsLg: 12,
-            colsMd: 12,
-            colsSm: 12,
-            colsXs: 12,
-            multiple: false,
-            options: [{ value: "15:00", label: "15:00" }]
+            fieldType: "TextArea",
+            name: "wqeq",
+            label: "ewqe",
+            width: "50%",
+            placeholder: "dsf",
+            cols: "",
+            colsLg: 17,
+            colsMd: 20,
+            colsSm: 5,
+            colsXs: 4
           }
         ],
         buttons: {
