@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="label" :for="name">
+  <el-form-item :label="label" :for="name" :required="required">
     <el-input
       type="text"
       :name="name"
@@ -17,13 +17,13 @@
 import formMixins from "../mixin/form-model";
 export default {
   name: "TextInput",
-  props: ["placeholder", "label", "name", "value", "width"],
+  props: ["placeholder", "label", "name", "value", "width", "required"],
   mixins: [formMixins],
   data() {
     return {
-      currentValue: this.value
+      currentValue: this.value,
     };
-  }
+  },
 };
 </script>
 

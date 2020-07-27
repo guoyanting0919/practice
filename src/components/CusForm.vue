@@ -29,13 +29,14 @@
           :uploadUrl="field.uploadUrl"
           :limit="field.limit"
           :btnText="field.btnText"
+          :required="field.required"
           :ref="field.name"
           :showAllLevels="field.showAllLevels"
         ></component>
       </el-col>
       <!-- <slot name="buttons"></slot> -->
       <el-col :span="24">
-        <el-button type="primary" @click="submit" size="small">{{onSubmitText}}</el-button>
+        <el-button type="primary" @click="submit('form')" size="small">{{onSubmitText}}</el-button>
         <el-button type="danger" @click="reset" size="small">{{onResetText}}</el-button>
       </el-col>
     </el-form>
@@ -65,14 +66,14 @@ export default {
     UploadFile,
     CheckBox,
     TreeSelect,
-    Cascader
+    Cascader,
   },
   props: ["config", "value"],
   data() {
     return {
       formData: this.value,
-      onSubmitText: this.config.buttons.onSubmitText || "提交",
-      onResetText: this.config.buttons.onResetText || "重置"
+      onSubmitText: this.config.buttons.onSubmitText || "SUBMIT",
+      onResetText: this.config.buttons.onResetText || "RESET",
     };
   },
   methods: {
@@ -80,8 +81,15 @@ export default {
       this.formData[fieldName] = value;
       this.$forceUpdate();
     },
-    submit() {
-      this.$emit("submit");
+    submit(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          console.log("yes");
+          this.$emit("submit");
+        } else {
+          console.log("NOT");
+        }
+      });
     },
     reset() {
       const vm = this;
@@ -96,11 +104,11 @@ export default {
         ) {
           vm.formData[name] = "";
         } else {
-          let flag = vm.config.fieldsConfig.filter(item => {
+          let flag = vm.config.fieldsConfig.filter((item) => {
             return item.fieldType === "CheckBox";
           });
           console.log(flag);
-          let names = flag.map(CheckBox => {
+          let names = flag.map((CheckBox) => {
             return CheckBox.name;
           });
 
@@ -111,16 +119,16 @@ export default {
           }
         }
       }
-    }
+    },
   },
   watch: {
     value() {
       this.formData = this.value;
-    }
+    },
   },
   mounted() {
     console.log(1, this.value);
-  }
+  },
 };
 </script>
 <style lang="scss">

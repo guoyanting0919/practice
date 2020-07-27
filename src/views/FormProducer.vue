@@ -33,25 +33,6 @@
 
     <!-- mainContainer -->
     <div class="mainContainer">
-      <!-- 欄位類型選擇 -->
-      <!-- <el-form class="titleLabel">
-        <el-form-item label="CHOOSE TYPE">
-          <el-select
-            popper-class="mySelect"
-            clearable
-            placeholder="Choose"
-            v-model="inputTypeSelect"
-          >
-            <el-option
-              v-for="item in inputTypeOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-        </el-form-item>
-      </el-form>-->
-
       <!-- TextInput -->
       <el-form class="formWidth">
         <p v-if="inputTypeSelect==='TextInput'" class="labelTitle">{{inputTypeSelect}}</p>
@@ -98,6 +79,11 @@
             >
               <el-option v-for="(item,index) in 24" :key="index" :label="item" :value="item"></el-option>
             </el-select>
+            <el-switch
+              v-model="TextInput.required"
+              active-text="Require"
+              inactive-text="NotRequire"
+            ></el-switch>
           </el-form-item>
         </transition>
       </el-form>
@@ -731,9 +717,9 @@ export default {
       config: {
         fieldsConfig: [],
         buttons: {
-          onSubmitText: "提交",
-          onResetText: "重置"
-        }
+          onSubmitText: "SUBMIT",
+          onResetText: "RESET",
+        },
       },
       // Json
       fieldsConfig: [],
@@ -743,44 +729,44 @@ export default {
       inputTypeOptions: [
         {
           label: "TextInput",
-          value: "TextInput"
+          value: "TextInput",
         },
         {
           label: "TextArea",
-          value: "TextArea"
+          value: "TextArea",
         },
         {
           label: "DatePicker",
-          value: "DatePicker"
+          value: "DatePicker",
         },
         {
           label: "DateRangePicker",
-          value: "DateRangePicker"
+          value: "DateRangePicker",
         },
         {
           label: "CheckBox",
-          value: "CheckBox"
+          value: "CheckBox",
         },
         {
           label: "RadioBtn",
-          value: "RadioBtn"
+          value: "RadioBtn",
         },
         {
           label: "SelectOption",
-          value: "SelectOption"
+          value: "SelectOption",
         },
         {
           label: "UploadFile",
-          value: "UploadFile"
+          value: "UploadFile",
         },
         {
           label: "TreeSelect",
-          value: "TreeSelect"
+          value: "TreeSelect",
         },
         {
           label: "Cascader",
-          value: "Cascader"
-        }
+          value: "Cascader",
+        },
       ],
 
       //   TextInput
@@ -790,7 +776,8 @@ export default {
         label: "",
         width: "",
         placeholder: "",
-        cols: ""
+        cols: "",
+        required: false,
       },
 
       //   TextArea
@@ -800,7 +787,7 @@ export default {
         label: "",
         width: "",
         placeholder: "",
-        cols: ""
+        cols: "",
       },
 
       //   DatePicker
@@ -809,7 +796,7 @@ export default {
         name: "",
         label: "",
         pickerType: "",
-        cols: ""
+        cols: "",
       },
       pickerOption: ["year", "month", "date", "dates", "week", "datetime"],
 
@@ -819,7 +806,7 @@ export default {
         name: "",
         label: "",
         pickerType: "",
-        cols: ""
+        cols: "",
       },
       pickerRangeOption: ["datetimerange", "daterange", "monthrange"],
 
@@ -835,7 +822,7 @@ export default {
         uploadUrl: "https://scan.1966.org.tw/images/Upload/Pic",
         limit: null,
         multiple: false,
-        btnText: ""
+        btnText: "",
       },
 
       //   CheckBox
@@ -847,7 +834,7 @@ export default {
         colsMd: "",
         colsSm: "",
         colsXs: "",
-        options: []
+        options: [],
       },
       optionFromApiCheck: false,
       checkValue: "",
@@ -864,7 +851,7 @@ export default {
         colsSm: "",
         colsXs: "",
         multiple: false,
-        options: []
+        options: [],
       },
       optionFromApiSel: false,
       selValue: "",
@@ -879,7 +866,7 @@ export default {
         colsMd: "",
         colsSm: "",
         colsXs: "",
-        options: []
+        options: [],
       },
 
       //   RadioBtn
@@ -891,7 +878,7 @@ export default {
         colsMd: "",
         colsSm: "",
         colsXs: "",
-        options: []
+        options: [],
       },
       optionFromApiRadio: false,
       radioValue: "",
@@ -906,12 +893,12 @@ export default {
         colsMd: "",
         colsSm: "",
         colsXs: "",
-        options: []
+        options: [],
       },
 
       // outputBox
       outputBox: "",
-      formData: ""
+      formData: "",
     };
   },
   methods: {
@@ -922,11 +909,11 @@ export default {
       vm.fieldsConfig.push(obj);
       vm.outputBox = JSON.stringify(vm.fieldsConfig);
       console.log(vm.fieldsConfig);
-      let arr = vm.fieldsConfig.map(form => {
+      let arr = vm.fieldsConfig.map((form) => {
         return { name: form.name, type: form.fieldType };
       });
       let formObj = {};
-      arr.map(o => {
+      arr.map((o) => {
         if (
           o.type === "TreeSelect" ||
           o.type === "Cascader" ||
@@ -941,7 +928,7 @@ export default {
       let b = vm.$baffle(".buffle");
       b.start()
         .set({ speed: 100, characters: "¯_(ツ)_/¯▐░▒▨▓▙▜" })
-        .text(text => vm.outputBox)
+        .text((text) => vm.outputBox)
         .reveal(1000);
       vm.config.fieldsConfig = vm.fieldsConfig;
       vm.formData2 = JSON.parse(vm.formData);
@@ -957,7 +944,7 @@ export default {
       let b = vm.$baffle(".buffle");
       b.start()
         .set({ speed: 100 })
-        .text(text => "fieldsConfig")
+        .text((text) => "fieldsConfig")
         .reveal(1000);
     },
     resetFun() {
@@ -989,11 +976,11 @@ export default {
       const vm = this;
       this.fieldsConfig.splice(index, 1);
       vm.outputBox = JSON.stringify(vm.fieldsConfig);
-      let arr = vm.fieldsConfig.map(form => {
+      let arr = vm.fieldsConfig.map((form) => {
         return { name: form.name, type: form.fieldType };
       });
       let formObj = {};
-      arr.map(o => {
+      arr.map((o) => {
         if (
           o.type === "TreeSelect" ||
           o.type === "Cascader" ||
@@ -1053,7 +1040,7 @@ export default {
     },
     getFormData() {
       console.log(this.formData2);
-    }
+    },
   },
   mounted() {
     const vm = this;
@@ -1063,7 +1050,7 @@ export default {
     //   .set({ speed: 100 })
     //   .text(text => "Hi dad!")
     //   .reveal(1000);
-  }
+  },
 };
 </script>
 
